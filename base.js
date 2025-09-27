@@ -50,6 +50,7 @@ function renderUsers(users) {
       </td>
     `;
 
+    // Botones
     const editBtn = row.querySelector(".edit-btn");
     const saveBtn = row.querySelector(".save-btn");
     const deleteBtn = row.querySelector(".delete-btn");
@@ -140,10 +141,7 @@ async function loadUsers() {
   try {
     const response = await fetch(url, {
       method: "GET",
-      headers: { 
-        "Content-Type": "application/json",
-        "x-api-key": API_KEY
-      }
+      headers: { "x-api-key": API_KEY } // 👉 solo API Key
     });
 
     console.log("📡 Respuesta usuarios:", response.status, response.statusText);
@@ -213,3 +211,4 @@ exportBtn.addEventListener("click", () => {
 // 🚀 Inicializar
 loadUsers();
 setInterval(loadUsers, 10000);
+
