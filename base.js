@@ -50,7 +50,6 @@ function renderUsers(users) {
       </td>
     `;
 
-    // Botones
     const editBtn = row.querySelector(".edit-btn");
     const saveBtn = row.querySelector(".save-btn");
     const deleteBtn = row.querySelector(".delete-btn");
@@ -83,16 +82,11 @@ function renderUsers(users) {
         });
 
         console.log("📡 Respuesta actualización:", res.status, res.statusText);
-
         const result = await res.json();
         console.log("📦 Resultado actualización:", result);
 
-        if (result.success) {
-          alert("Usuario actualizado ✅");
-          loadUsers();
-        } else {
-          alert("Error al actualizar ❌");
-        }
+        alert("Usuario actualizado ✅");
+        loadUsers();
       } catch (err) {
         console.error("❌ Error en actualización:", err);
       }
@@ -112,16 +106,11 @@ function renderUsers(users) {
         });
 
         console.log("📡 Respuesta eliminación:", res.status, res.statusText);
-
         const result = await res.json();
         console.log("📦 Resultado eliminación:", result);
 
-        if (result.success) {
-          alert("Usuario eliminado ✅");
-          loadUsers();
-        } else {
-          alert("Error al eliminar ❌");
-        }
+        alert("Usuario eliminado ✅");
+        loadUsers();
       } catch (err) {
         console.error("❌ Error en eliminación:", err);
       }
@@ -141,31 +130,24 @@ async function loadUsers() {
   try {
     const response = await fetch(url, {
       method: "GET",
-      headers: { "x-api-key": API_KEY } // 👉 solo API Key
+      headers: { 
+        "x-api-key": API_KEY
+      }
     });
 
     console.log("📡 Respuesta usuarios:", response.status, response.statusText);
 
-    const text = await response.text();
-    console.log("📦 Respuesta bruta:", text);
-
-    let data;
-    try {
-      data = JSON.parse(text);
-    } catch (e) {
-      console.error("❌ No es JSON válido:", e.message);
-      tableBody.innerHTML = "<tr><td colspan='7'>Respuesta no válida (no es JSON)</td></tr>";
+    if (!response.ok) {
+      console.error("❌ Error HTTP:", response.status, response.statusText);
+      tableBody.innerHTML = "<tr><td colspan='7'>Error en el servidor</td></tr>";
       return;
     }
 
-    console.log("✅ Datos parseados:", data);
+    const data = await response.json();
+    console.log("📦 Datos recibidos:", data);
 
-    if (!data.success) {
-      tableBody.innerHTML = "<tr><td colspan='7'>Error cargando usuarios</td></tr>";
-      return;
-    }
-
-    allUsers = data.users;
+    // 🚨 Aquí la diferencia: no usamos data.success
+    allUsers = Array.isArray(data) ? data : (data.users || []);
     renderUsers(allUsers);
 
   } catch (err) {
@@ -211,4 +193,3 @@ exportBtn.addEventListener("click", () => {
 // 🚀 Inicializar
 loadUsers();
 setInterval(loadUsers, 10000);
-
