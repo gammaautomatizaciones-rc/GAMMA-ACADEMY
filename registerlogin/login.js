@@ -14,13 +14,14 @@ form.addEventListener("submit", async function(e) {
   button.textContent = "Validando...";
 
   try {
-    const response = await fetch(`${API_URL}/login`, {
+    const response = await fetch(API_URL, {
       method: "POST",
       headers: { 
         "Content-Type": "application/json",
         "x-api-key": API_KEY
       },
       body: JSON.stringify({
+        action: "login", // 👈 indicador para Make
         correo: document.getElementById("email").value,
         contrasena: document.getElementById("password").value
       })
@@ -47,9 +48,11 @@ form.addEventListener("submit", async function(e) {
     }
 
   } catch (error) {
+    console.error("❌ Error en login:", error);
     message.style.color = "#e74c3c";
     message.textContent = "Error al conectar con el servidor.";
     button.disabled = false;
     button.textContent = "Iniciar Sesión";
   }
 });
+
