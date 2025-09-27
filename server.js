@@ -37,7 +37,7 @@ const ALLOWED_ORIGINS = (process.env.ALLOWED_ORIGINS && process.env.ALLOWED_ORIG
   "http://localhost:5500",
   "http://localhost:3000",
   "http://localhost",
-  "https://tuusuario.github.io"
+  "https://gammaautomatizaciones-rc.github.io"
 ];
 
 // -------------------- MIDDLEWARE GLOBAL LOGS --------------------
@@ -255,4 +255,5 @@ app.listen(PORT, () => {
   logger.info(`🚀 Servidor corriendo en http://localhost:${PORT}`);
   logger.info(`🔑 API Key requerida en header: x-api-key`);
 });
+
 
