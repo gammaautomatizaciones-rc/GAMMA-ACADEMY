@@ -3,7 +3,7 @@ const isLocal = window.location.hostname === "127.0.0.1" || window.location.host
 
 // Si el frontend está en GitHub Pages, automáticamente usa la URL de ngrok
 // 👉 reemplazá por tu dominio actual de ngrok
-const NGROK_URL = "https://d8db879091f5.ngrok-free.app"; 
+const NGROK_URL = "https://hook.us2.make.com/oqcozktrzp2necx5wkx5wrxenp5vhbt2"; 
 
 const CONFIG = {
   API_URL: isLocal 
@@ -13,3 +13,4 @@ const CONFIG = {
 };
 
 console.log("🌍 Configuración cargada:", CONFIG);
+
