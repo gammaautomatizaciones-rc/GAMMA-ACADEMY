@@ -104,7 +104,10 @@ function renderUsers(users) {
         console.log("🗑️ Eliminando usuario ID:", user.id);
         const res = await fetch(`${API_URL}/users/${user.id}`, {
           method: "DELETE",
-          headers: { "x-api-key": API_KEY }
+          headers: { 
+            "Content-Type": "application/json",
+            "x-api-key": API_KEY
+          }
         });
 
         console.log("📡 Respuesta eliminación:", res.status, res.statusText);
@@ -137,7 +140,10 @@ async function loadUsers() {
   try {
     const response = await fetch(url, {
       method: "GET",
-      headers: { "x-api-key": API_KEY }
+      headers: { 
+        "Content-Type": "application/json",
+        "x-api-key": API_KEY
+      }
     });
 
     console.log("📡 Respuesta usuarios:", response.status, response.statusText);
