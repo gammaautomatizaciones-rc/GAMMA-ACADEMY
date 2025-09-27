@@ -31,7 +31,7 @@ const logger = winston.createLogger({
 });
 
 // -------------------- CONFIG --------------------
-const API_KEY = process.env.API_KEY || "SuperClave123";
+const API_KEY = process.env.API_KEY || "9847261594038275641029384756";
 
 const ALLOWED_ORIGINS = (process.env.ALLOWED_ORIGINS && process.env.ALLOWED_ORIGINS.split(",")) || [
   "http://localhost:5500",
@@ -255,3 +255,4 @@ app.listen(PORT, () => {
   logger.info(`🚀 Servidor corriendo en http://localhost:${PORT}`);
   logger.info(`🔑 API Key requerida en header: x-api-key`);
 });
+
