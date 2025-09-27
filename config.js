@@ -3,9 +3,10 @@ const isLocal = window.location.hostname === "127.0.0.1" || window.location.host
 
 // Configuración automática
 const CONFIG = {
-  API_URL: "https://63efce959741.ngrok-free.app"
+  API_URL: "https://0b0cf5b7502b.ngrok-free.app"
   API_KEY: "9847261594038275641029384756" // misma clave que en .env
 };
 
 console.log("🌍 Configuración cargada:", CONFIG);
+
 
