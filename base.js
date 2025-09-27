@@ -7,6 +7,8 @@ let allUsers = [];
 const API_URL = CONFIG.API_URL;
 const API_KEY = CONFIG.API_KEY;
 
+console.log("🌍 API_URL detectada:", API_URL);
+
 // ✅ Verificar si es admin
 if (localStorage.getItem("adminAuth") !== "true") {
   const password = prompt("Ingrese contraseña de administrador:");
@@ -28,7 +30,6 @@ function renderUsers(users) {
   }
 
   users.forEach(user => {
-    // ✅ Fecha segura: usa created_at si existe, sino fecha, sino "-"
     const fechaUsuario = user.created_at
       ? new Date(user.created_at).toLocaleString()
       : (user.fecha || "-");
@@ -49,7 +50,6 @@ function renderUsers(users) {
       </td>
     `;
 
-    // --- Botones ---
     const editBtn = row.querySelector(".edit-btn");
     const saveBtn = row.querySelector(".save-btn");
     const deleteBtn = row.querySelector(".delete-btn");
@@ -71,6 +71,7 @@ function renderUsers(users) {
       };
 
       try {
+        console.log("✏️ Enviando actualización de usuario:", updatedUser);
         const res = await fetch(`${API_URL}/users/${user.id}`, {
           method: "PUT",
           headers: { 
@@ -80,7 +81,11 @@ function renderUsers(users) {
           body: JSON.stringify(updatedUser)
         });
 
+        console.log("📡 Respuesta actualización:", res.status, res.statusText);
+
         const result = await res.json();
+        console.log("📦 Resultado actualización:", result);
+
         if (result.success) {
           alert("Usuario actualizado ✅");
           loadUsers();
@@ -96,12 +101,17 @@ function renderUsers(users) {
       if (!confirm(`¿Seguro que deseas eliminar al usuario ${user.nombre}?`)) return;
 
       try {
+        console.log("🗑️ Eliminando usuario ID:", user.id);
         const res = await fetch(`${API_URL}/users/${user.id}`, {
           method: "DELETE",
           headers: { "x-api-key": API_KEY }
         });
 
+        console.log("📡 Respuesta eliminación:", res.status, res.statusText);
+
         const result = await res.json();
+        console.log("📦 Resultado eliminación:", result);
+
         if (result.success) {
           alert("Usuario eliminado ✅");
           loadUsers();
@@ -121,11 +131,16 @@ function renderUsers(users) {
 async function loadUsers() {
   tableBody.innerHTML = "<tr><td colspan='7'>Cargando...</td></tr>";
 
+  const url = `${API_URL}/users`;
+  console.log("📡 Solicitando usuarios a:", url);
+
   try {
-    const response = await fetch(`${API_URL}/users`, {
+    const response = await fetch(url, {
       method: "GET",
       headers: { "x-api-key": API_KEY }
     });
+
+    console.log("📡 Respuesta usuarios:", response.status, response.statusText);
 
     if (!response.ok) {
       console.error("❌ Error HTTP:", response.status, response.statusText);
