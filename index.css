@@ -1,0 +1,241 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: radial-gradient(circle at top, #1a1a1a, #0d0d0d 80%);
+  color: #f5f5f5;
+}
+
+/* ================= HEADER ================= */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: rgba(20, 20, 20, 0.95);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.6);
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #f1c40f;
+  text-shadow: 0 0 8px rgba(241,196,15,0.6);
+}
+
+/* Botón principal - Estudia */
+/* Botón principal - Estudia */
+.btn-register, .cta-btn {
+  background: linear-gradient(90deg, #d4af37, #f1c40f);
+  padding: 0.7rem 1.5rem;
+  border-radius: 12px;
+  font-weight: bold;
+  color: #111;
+  text-decoration: none;
+  box-shadow: 0 0 12px rgba(241,196,15,0.6);
+  transition: all 0.3s ease;
+}
+
+/* 👉 Solo en el header lo corremos un poquito */
+header .btn-register {
+  margin-right: 0.8rem; /* ajustá el valor según te guste */
+}
+
+.btn-register:hover, .cta-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 18px rgba(241,196,15,0.9);
+}
+
+/* Botón secundario - Login */
+.btn-login, .cta-secondary {
+  background: #2c2c2c;
+  padding: 0.7rem 1.5rem;
+  border-radius: 12px;
+  font-weight: bold;
+  color: #f5f5f5;
+  text-decoration: none;
+  margin-left: 1rem;
+  border: 1px solid #f1c40f;
+  transition: all 0.3s ease;
+}
+
+.btn-login:hover, .cta-secondary:hover {
+  background: #f1c40f;
+  color: #111;
+  box-shadow: 0 0 15px rgba(241,196,15,0.8);
+}
+
+/* ================= HERO ================= */
+.hero {
+  text-align: center;
+  padding: 5rem 2rem;
+}
+
+.hero h1 {
+  font-size: 2.8rem;
+  margin-bottom: 2rem;
+}
+
+.hero h1 span {
+  color: #f1c40f;
+}
+
+/* Botón CTA */
+.cta-btn {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 1rem 2rem;
+}
+
+.cta-secondary {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.8rem 1.5rem;
+}
+
+/* ================= CAROUSEL ================= */
+.carousel {
+  overflow: hidden;
+  max-width: 600px;
+  margin: 0 auto 2rem auto;
+  height: 50px;
+  position: relative;
+}
+
+.carousel-track {
+  display: flex;
+  animation: slide 16s infinite linear;
+}
+
+.carousel-item {
+  min-width: 100%;
+  text-align: center;
+  font-size: 1.2rem;
+  color: #f1c40f;
+  text-shadow: 0 0 8px rgba(241,196,15,0.5);
+}
+
+@keyframes slide {
+  0%   { transform: translateX(0%); }
+  20%  { transform: translateX(0%); }
+  25%  { transform: translateX(-100%); }
+  45%  { transform: translateX(-100%); }
+  50%  { transform: translateX(-200%); }
+  70%  { transform: translateX(-200%); }
+  75%  { transform: translateX(-300%); }
+  95%  { transform: translateX(-300%); }
+  100% { transform: translateX(0%); }
+}
+
+/* ================= CONTACTO ================= */
+.contacto {
+  text-align: center;
+  padding: 3rem 1rem;
+}
+
+.contacto h2 {
+  margin-bottom: 1rem;
+  color: #f1c40f;
+}
+
+.wsp-btn {
+  display: inline-block;
+  padding: 1rem 2rem;
+  margin-top: 1rem;
+  background: linear-gradient(90deg, #25d366, #128c7e);
+  border-radius: 12px;
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+  box-shadow: 0 0 12px rgba(37,211,102,0.6);
+  transition: all 0.3s ease;
+}
+
+.wsp-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(37,211,102,0.9);
+}
+
+/* ================= SERVICIOS ================= */
+.servicios {
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.servicios h2 {
+  margin-bottom: 2rem;
+  color: #f1c40f;
+  font-size: 2rem;
+  text-shadow: 0 0 10px rgba(241,196,15,0.5);
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.card {
+  background: linear-gradient(180deg, rgba(30,30,30,0.95), rgba(15,15,15,0.98));
+  padding: 2rem;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+}
+
+.card h3 {
+  margin-bottom: 1rem;
+  color: #f1c40f;
+}
+
+/* ================= FOOTER ================= */
+footer {
+  text-align: center;
+  padding: 1.5rem;
+  background: rgba(20,20,20,0.95);
+  border-top: 1px solid rgba(241,196,15,0.3);
+}
+
+.socials {
+  margin-top: 0.8rem;
+}
+
+.socials a {
+  margin: 0 10px;
+  color: #f1c40f;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.socials a:hover {
+  text-decoration: underline;
+}
+/* ================= SCROLLBAR ================= */
+/* Para navegadores basados en WebKit (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0d0d0d;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #d4af37, #f1c40f);
+  border-radius: 8px;
+  box-shadow: 0 0 6px rgba(241,196,15,0.5);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #f1c40f, #d4af37);
+}
+
+/* Para Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #f1c40f #0d0d0d;
+}
