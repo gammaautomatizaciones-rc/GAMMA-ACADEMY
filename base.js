@@ -148,14 +148,19 @@ async function loadUsers() {
 
     console.log("📡 Respuesta usuarios:", response.status, response.statusText);
 
-    if (!response.ok) {
-      console.error("❌ Error HTTP:", response.status, response.statusText);
-      tableBody.innerHTML = "<tr><td colspan='7'>Error en el servidor</td></tr>";
+    const text = await response.text();
+    console.log("📦 Respuesta bruta:", text);
+
+    let data;
+    try {
+      data = JSON.parse(text);
+    } catch (e) {
+      console.error("❌ No es JSON válido:", e.message);
+      tableBody.innerHTML = "<tr><td colspan='7'>Respuesta no válida (no es JSON)</td></tr>";
       return;
     }
 
-    const data = await response.json();
-    console.log("📦 Datos recibidos:", data);
+    console.log("✅ Datos parseados:", data);
 
     if (!data.success) {
       tableBody.innerHTML = "<tr><td colspan='7'>Error cargando usuarios</td></tr>";
